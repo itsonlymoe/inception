@@ -1,0 +1,41 @@
+Changing The Array Values
+colors = [ "green", "blue", "red"]
+
+#Enumerable
+
+-class of methods both arrays and hashs can call. 
+.map will return the value of what is inside the block instead of .each which returns itself. 
+	-dont use puts when using .map because it will return nil.
+# 	> Enumerables with hashes
+			 > my_hash2.each {|key, value| puts "#{key} points to #{value}"}
+	
+#* 	Hashes*
+
+	> a dictionary-like collection of unique keys and thier values.
+	> you have to tell it which index you want to use
+		> called a key
+		> called dictionary 
+		
+## 	- creating a hash
+		> {}
+		 > Hash.new
+		> my_hash = {
+			'key1' => "value"
+			'key2' => "value"
+			}
+## 	-Defining a hash
+		>  { :key1 => "first value"}
+		
+## 	-adding more to hash
+		>  my_hash[:key2] = "second value"
+		
+## 	- accessing new value
+		> - my_hash[:key2]
+		> - nill will return when you try to find the value for undefined data
+		
+## 	- setting a default value
+		> - new_hash = Hash.new ("default value")
+		> - overiding that nil is the default value, so we set default value.
+		
+
+
