@@ -14,12 +14,28 @@ loop do                                             # Server runs forever
     lines << line
   end
   
-puts lines                                    # Output the full request to stdout
+# puts lines                                    # Output the full request to stdout
 
-filename = "index.html"
-response = File.read('index.html')
+filename = lines[0].gsub(/GET \//, '').gsub(/\ HTTP.*/, '')
 
-client.puts response
+#"index.html HTTP/1.1"
+# "index.html"
+
+if File.exists?(filename)	
+	client.puts "HTTP/1.1 200 OK\r\n" #adding the header before the body
+
+	if filename =~ /.css$/
+		client.puts "Content-Type: text/css\r\n\r\n"
+	else
+		client.puts "Content-Type: text/html\r\n\r\n"
+	end 
+
+	client.puts File.read(filename) #client.puts is another option instead of creating a variable
+else
+	client.puts "HTTP/1.1 404 Not found "
+end 
+
+# client.puts response
 
 client.close
 
